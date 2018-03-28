@@ -19,7 +19,7 @@ void mostrar(std::list<int> &lista){
 int main(){
     int espada,qtd;
 
-    std::cout << "Digite qtd e primeiro" << std::endl;
+    std::cout << "Digite quantidade e primeiro" << std::endl;
     scanf("%i", &qtd);
 
     std::cin >> espada;
@@ -33,8 +33,13 @@ int main(){
         rodar(lista);
 
     while(lista.size() > 1){
-        rodar(lista);
         lista.pop_front();
+        if(lista.front() == 3 || lista.front() == 1){
+            rodar(lista);
+            lista.pop_front();              // REALIZA O SALTO 2X
+            rodar(lista);
+            lista.pop_front();
+        }
     }
 
     printf("Vencedor: ");
