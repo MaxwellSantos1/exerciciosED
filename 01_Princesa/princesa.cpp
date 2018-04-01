@@ -36,10 +36,12 @@ int main(){
         lista.pop_front();
         if(lista.front() == 3 || lista.front() == 1){
             rodar(lista);
-            lista.pop_front();              // REALIZA O SALTO 2X
+            lista.pop_front();              // REALIZA O SALTO 2X CASO SEJA 3 OU 1
             rodar(lista);
             lista.pop_front();
         }
+            rodar(lista);
+            lista.pop_front();               // CASO NAO SEJA NAO EXECUTA N SALTOS
     }
 
     printf("Vencedor: ");
