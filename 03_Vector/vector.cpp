@@ -13,12 +13,14 @@ struct Vetor{
 //        this->data = (int*) malloc(capacidade * 4);//retorno lixo
         this->_data = new int[capacidade];//retorno zerado
     }
+
     void push_back(int value){
         if(this->_size == this->_capacidade)
            this->reserve(2 * _capacidade);
         this->_data[this->_size] = value;
         this->_size += 1;
     }
+
     void pop_back(){
         if(this->_size == 0)
             return;
@@ -27,7 +29,7 @@ struct Vetor{
     }
 
     //retornar a refencia à variavel dessa posicao
-    int& at(int indice){
+    int at(int indice){
         return this->_data[indice];
     }
     int& front(){
@@ -36,11 +38,11 @@ struct Vetor{
     int& back(){
         return this->_data[this->_size - 1];
     }
-    int * begin(){
+    int *begin(){
         return &this->_data[0];
     }
-    int * end(){
-        return &this->_data[this->_size - 1];
+    int end(){
+        return this->_data[this->_size - 1];
     }
     int size(){
         return this->_size;
@@ -56,7 +58,7 @@ struct Vetor{
             data2[i] = this->_data[i];
         }
 
-       this->_data[capacity];   // pede um novo bloco de dados
+       this->_data[capacity];  // pede um novo bloco de dados
     }
 
 
@@ -67,6 +69,7 @@ struct Vetor{
 
 int main()
 {
+    int i;
     vector<int> v;
     v.push_back(1);//1 elemento, 1 de capacidade
     v.push_back(3);//2 elementos,2 de cap
@@ -97,15 +100,43 @@ int main()
 //    for(auto it = list.begin(); it != list.end(); it++)
 //        cout << *it << " ";
 
-    Vetor pivet(5);
-    pivet.push_back(4);
-    pivet.push_back(2);
-    pivet.push_back(7);
-    pivet.at(2) = 9;
 
-    for (int i =0; i<pivet.size(); i++) {
+    //TESTANDO TODAS AS FUNÇÕES //
+
+    Vetor pivet(5);
+    pivet.push_back(1);
+    pivet.push_back(2);
+    pivet.push_back(3);         // LISTA EM ORDEM: 1,2,3,4,5
+    pivet.push_back(4);
+    pivet.push_back(5);
+
+
+    pivet.reserve(200); // RESERVANDO 200 A LISTA PIVET
+
+    cout << "LISTA ANTES DAS MUDANÇAS:\n " << endl;
+
+    for (i=0; i<pivet.size(); i++) {
          cout << pivet.at(i) << endl;
     }
+
+    cout << "\nMostrando elemento na posicao 3: " << pivet.at(3) << endl;
+    cout << "Mostrando primeiro elemento: " << pivet.front() << endl;
+    cout << "Mostrando ultimo elemento: " << pivet.end() << endl;
+    cout << "Removendo o ultimo elemento na lista: DONE";
+    pivet.pop_back();
+    printf("\n");
+    cout << "Mostrando tamanho ATUAL de elementos na lista Pivet: " << pivet.size() << endl;
+
+
+    cout << "\nLISTA DEPOIS DAS MUDANÇAS:\n ";
+
+    for (i=0; i<pivet.size(); i++) {
+         cout << pivet.at(i);
+         printf("\n");
+    }
+
+    printf("\n");
+
 
     return 0;
 }
