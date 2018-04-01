@@ -15,8 +15,7 @@ struct Vetor{
     }
     void push_back(int value){
         if(this->_size == this->_capacidade)
-            return;
-            //this->reserve(2 * _capacitade);
+           this->reserve(2 * _capacidade);
         this->_data[this->_size] = value;
         this->_size += 1;
     }
@@ -102,18 +101,11 @@ int main()
     pivet.push_back(4);
     pivet.push_back(2);
     pivet.push_back(7);
-    cout << pivet.at(2);
     pivet.at(2) = 9;
 
-    int x = 3;
-    int y = 2;
-    x = y;
-    int z = x;
-    //lvalue & significa referencia
-    int& a = x;
+    for (int i =0; i<pivet.size(); i++) {
+         cout << pivet.at(i) << endl;
+    }
 
-
-
-    cout << "Hello World!" << endl;
     return 0;
 }
